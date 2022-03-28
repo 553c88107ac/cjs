@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="robots" content="all" />
+<title>createjs template</title>
+<script>
+    ;(function (d) {
+       var w = Math.min(d.documentElement.clientWidth, d.documentElement.clientHeight)
+       var setFs = function () { d.getElementsByTagName('html')[0].style.fontSize = (w / 750 *100).toFixed(3) + 'px'; };
+       setFs();
+       window.addEventListener('resize', function () { setFs(); } , false) ;
+    })(document); 
+</script>
+<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+
+<script src="https://game.gtimg.cn/images/js/quwan/createjs.100.js"></script>
+<script src="https://game.gtimg.cn/images/js/quwan/zepto.116.js"></script>
+<script src="https://game.gtimg.cn/images/js/quwan/zepto.extend.js"></script>
+
+<script src="qwan_sdk.js"></script>
+<script src="main.js"></script>
+</head>
+<body>
+
+<!-- core game -->
+<div id="gameBox" >
+    <canvas id="game"></canvas>
+</div>
+
+<!-- 横屏提示 -->
+<div class="landscape-hinter">
+    <div class="hinter-phone"></div><div class="hinter-rotate"></div><p class="hinter-text">竖屏体验效果更佳</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+/* =====reset===== */
+html,body,h1,h2,h3,h4,p,iframe,ul,ol,li,th,td {margin:0;padding:0;}
+li {list-style:none;}
+body {font:12px/1.5 Arial, "\5FAE\8F6F\96C5\9ED1";color:#666;}
+table {border-collapse:collapse; border-spacing:0;}
+img {border:0;display:block;}
+i,em {font-style:normal;}
+
+a,
+a:hover {text-decoration:none;background-color:transparent;}
+a:focus {outline:none;}
+.hide {display:none;}
+.ishow {display:block !important;}
+.ht {text-indent:-9999px;overflow:hidden;}
+
+/* =====landscape tips===== */
+.landscape-hinter { position: fixed; z-index: 999; top: 0; right: 0; left: 0; display: none; width: 100%; height: 100%; background: #131313; }
+.landscape-hinter .hinter-phone,
+.landscape-hinter .hinter-rotate { position: absolute; top: 50%; left: 50%; }
+.landscape-hinter .hinter-rotate { width: 3.0rem; height: .5rem;margin-left:-1.5rem;margin-top:-0.25rem; background: url(http://mat1.gtimg.com/ipad/qq_time/imgs/m/landscape-hint.png) center center no-repeat; background-size: 100%; } 
+.landscape-hinter .hinter-text { font-size: 14px; font-weight: 400; line-height: 1; bottom: 10%; color: #bbb;left: 0; position: absolute; text-align: center; right: 0;  }
+.landscape-hinter .hinter-phone { width: 2.28rem; height: 1.2rem;margin-left:-1.14rem;margin-top:-0.6rem; background: url(http://mat1.gtimg.com/ipad/qq_time/imgs/m/landscape-phone.png) center center no-repeat; background-size: 100%; -webkit-animation: rotateHint 2.6s ease-in infinite; animation: rotateHint 2.6s ease-in infinite; }
+
+@-webkit-keyframes rotateHint {
+    0% { -webkit-transform:rotate(0) ; opacity: .2 }
+    50% { -webkit-transform:rotate(90deg) ; opacity: 1 }
+    100% { -webkit-transform:rotate(90deg) ; opacity: 0 }
+}
+@keyframes rotateHint {
+    0% { transform:rotate(0) ; opacity: .2 }
+    50% { transform:rotate(90deg) ; opacity: 1 }
+    100% { transform:rotate(90deg) ; opacity: 0 }
+}
+
+@media screen and (orientation:landscape) {
+    .landscape-hinter { display: block; }
+}
+
+@media screen and (orientation:portrait) {
+    .landscape-hinter { display: none; }
+}
+
+/* game style */
+#gameBox {width: 100%;height: 100vh;}
+#gameBox canvas {display:block;width: 100%;height: 100%;}
