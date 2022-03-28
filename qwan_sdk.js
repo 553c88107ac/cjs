@@ -20,6 +20,7 @@ var qwan = {
 
         createjs.Ticker.timingMode = createjs.Ticker.RAF;
         createjs.Ticker.addEventListener("tick", this.stage);
+        createjs.Ticker.addEventListener("tick", config.onUpdate);
     },
 
     queue: null,
@@ -147,8 +148,25 @@ var qwan = {
         var fontColor = style.color || '#333333'
 
         var el = new createjs.Text(txt, fontStyle, fontColor)
-        el.x = pos[0]
-        el.y = pos[1]
+
+        var finalX = pos[0]
+        if (typeof finalX === 'string') {
+            var tempX  = 0;
+            (finalX === 'center') && (tempX = (parent.width - el.getBounds().width) / 2);
+            (finalX === 'right') && (tempX = (parent.width - el.getBounds().width) );
+            finalX = tempX
+        }
+        el.x = finalX
+
+        var finalY = pos[1]
+        if (typeof finalY === 'string') {
+            var tempY  = 0;
+            (finalY === 'middle') && (tempY = (parent.height - el.getBounds().height) / 2);
+            (finalY === 'bottom') && (tempY = (parent.height - el.getBounds().height) );
+            finalY = tempY
+        }
+        el.y = finalY
+
 
         parent && parent.addChild(el)
         return el
@@ -176,8 +194,11 @@ var qwan = {
     },
 
     // todo
-    makeBtn: function(){
-
+    makeBtn: function(parent, posAndSize, text, bgColor, ext = {}){
+        var div = qwan.makeDiv(parent, posAndSize )
+        var r = qwan.makeRect(div, [0,0,posAndSize[2], posAndSize[3]], bgColor)
+        var t = qwan.makeTxt(div, ['center', 'middle'], text, {color: '#ffffff'})
+        return t
     },
 
     playAudio: function(audioName){
@@ -213,15 +234,4 @@ qwan.tool = {
             array[j] = temp;
         }
     }
-}
-
-
-
-var x = {
-    tickerPause: false,
-    updateGame: function(e){
-        if (e.paused || this.tickerPause) {
-            return
-        }
-    },
 }
